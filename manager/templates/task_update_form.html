@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+<title>Edit Task</title>
+{% endblock %}
+
+
+{% block content %}
+<div class='container col-md-16'>
+    <form action="{% url 'update-task-form' slug=task.slug %}" method='post' enctype="multipart/form-data">
+        {% csrf_token %}
+        <h1 class='edit-title'>Edit "{{ task.title|title }}" task</h1>
+        {{ form|crispy}}
+        <button type="submit" class="btn btn-dark">Edit</button>
+        <a href="{% url 'home' %}" class="btn btn-light">Cancel</a>
+
+    </form>
+</div>
+{% endblock %}

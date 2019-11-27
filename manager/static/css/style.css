@@ -1,0 +1,201 @@
+
+body {
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    font-family: sans-serif;
+    color: #222;
+}
+html {
+    position: relative;
+    mix-height: 100%;
+}
+
+.container {
+    height: 85%;
+}
+
+.container-fluid {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.card-form{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.card:hover {
+    box-shadow: 1px 1px 8px #000;
+    background-color: #eee7dc;
+    color: #6d6b67;
+}
+
+.container-form {
+    margin-top: 10px;
+}
+
+.create-task {
+    margin-left: 365px;
+}
+
+.row {
+    padding: 0px 15px;
+}
+
+
+.field-label {
+    color: #343a40;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.card-img-top {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+}
+
+.comment-text {
+    font-size: 25px;
+}
+
+.comment-block {
+    font-size: 18px;
+}
+
+.task-img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+}
+
+.my-task {
+    text-align: justify;
+    text-indent: 5px;
+    color:  #343a40;
+    margin-top: 25px;
+}
+
+.task-title {
+    font-size: 40px;
+    margin-top: 30px;
+    color:  #343a40;
+}
+
+.task-text {
+    font-size: 25px;
+    margin-top: 30px;
+    color:  #343a40;
+}
+
+.task-created {
+    font-size: 25px;
+    margin-top: 30px;
+    color:  #343a40;
+    text-decoration: underline
+}
+
+.task-staff {
+    font-size: 25px;
+    margin-top: 30px;
+    color:  #343a40;
+
+}
+
+.card-title {
+    font-size: 25px;
+    color:  #343a40;
+    text-align: center;
+}
+
+.card-text {
+    font-size: 15px;
+    color:  #343a40;
+    text-align: left;
+    margin-bottom: 1rem;
+}
+
+.card-created {
+    font-size: 15px;
+    color:  #343a40;
+    text-align: justify;
+}
+
+.card-staff {
+    font-size: 15px;
+    color:  #343a40;
+    margin-bottom: -3px;
+    margin-top: 5px;
+}
+
+.cart-info {
+    position: absolute;
+    bottom: 0;
+}
+
+.field-label {
+    font-size: 20px;
+    color:  #343a40;
+}
+
+.edit-text {
+    font-size: 20px;
+    color:  #343a40;
+}
+
+.edit-title {
+    font-size: 40px;
+    color:  #343a40;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.delete-task {
+    margin-top: 50px;
+}
+
+#card-list {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.btn-primary {
+    background-color: #6648b1;
+    border: 1px solid #6644b1;
+}
+
+.btn-primary:hover {
+    background-color: #563d7c;
+    border: 1px solid #563d7c;
+}
+
+.paginator {
+    font-size: 25px;
+    color:  #343a40;
+    text-align: center;
+}
+
+#id_text {
+    width: 300px;
+    height: 3em;
+}
+
+footer p {
+    padding-top: 1rem;
+}
+
+
+
+@media (max-width: 992px) {
+
+}
+
+@media (max-width: 768px) {
+
+}
+
+@media (max-width: 576px) {
+
+}

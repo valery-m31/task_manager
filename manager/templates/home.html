@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+<title>Task Manager</title>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid padding col-9">
+    <div class="row padding">
+        {% for task in task_list %}
+        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-6 col-xl-3 card-form">
+            <div class="card">
+                <div class="wrapper">
+                    <a href="{% url 'task-detail' slug=task.slug %}">
+                        <img class="card-img-top" src="{{ task.image.url }}" alt="team">
+                    </a>
+                </div>
+                <div class="card-body">
+                    <h4 class="card-title">{{ task.title|title }}</h4>
+                    <p class="card-text">{{ task.text|truncatewords:3 }}</p>
+                    <a href="{% url 'task-detail' slug=task.slug %}" class="btn btn-outline-secondary">
+                        Detail
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% if is_paginated %}
+<div class='paginator col-9'>
+  <ul class="pagination">
+    {% if page_obj.has_previous %}
+      <li><a href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&laquo;</span></li>
+    {% endif %}
+    {% for i in paginator.page_range %}
+      {% if page_obj.number == i %}
+        <li class="active">
+            <span>{{ i }} <span class="sr-only">(current)</span></span>
+        </li>
+      {% else %}
+        <li><a href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if page_obj.has_next %}
+      <li><a href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&raquo;</span></li>
+    {% endif %}
+  </ul>
+</div>
+{% endif %}
+
+
+
+
+
+
+{% endblock %}

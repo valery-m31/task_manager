@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+{% block title %}
+<title>Task Detail</title>
+{% endblock %}
+
+
+{% block content %}
+<div class='container'>
+    <div class='task-title'>
+        <p>{{ object.title|title }}</p>
+    </div>
+    <div class='task-img'>
+    <img src="{{ object.image.url }}" class="task-img" alt="lorem">
+    </div>
+    <div class='task-text'>
+        <p>{{ object.text }}</p>
+    </div>
+    <div class='task-created'>
+        <p>Created at: {{ object.created_at }}</p>
+    </div>
+    <div class='task-deadline'>
+        <p>{{ object.deadline_at }}</p>
+    </div>
+    <!-- <div class='task-staff'>
+        <p>Task for: {{ object.staff|title }}</p>
+    </div> -->
+    <div class='task-staff'>
+        <p>
+            Task for: {% for person in object.people.all %} {{ person }} {% endfor %}
+        </p>
+    </div>
+    {% if request.user == object.author %}
+    <a href="{% url 'update-task-form' slug=object.slug %}" class="btn btn-dark">
+        Edit
+    </a>
+
+    <a href="{% url 'delete-task' slug=object.slug %}" class="btn btn-danger">
+        Delete
+    </a>
+    {% endif %}
+</div>
+<br>
+<br>
+<div class='container'>
+<div class='mail-comment-section'>
+    <div class="col-6">
+        <form method='post' action="." class='comment-form'>
+            {{ comment_form.as_p }}
+            {% csrf_token %}
+
+            <br>
+            <input type="submit" class="btn btn-dark" value="Send">
+        </form>
+    </div>
+
+    {{ comments.count }} Comment{{ comments|pluralize}}
+    <br>
+    <br>
+    {% for comment in comments %}
+    <blockquote class="blockquote">
+      <p class="mb-0">{{ comment.text|linebreaks }}</p>
+      <footer class="blockquote-footer">by
+          <cite title="Source Title">
+              {{ comment.author|title }} | {{ comment.timestamp|timesince }} ago
+          </cite>
+      </footer>
+    </blockquote>
+    <div class="replied-comments container">
+        {% for reply in comment.replies.all %}
+        <blockquote class="blockquote">
+          <p class="mb-0 info">{{ reply.text }}</p>
+          <footer class="blockquote-footer">by
+              <cite title="Source Title">
+                  {{ reply.author|title }} | {{ reply.timestamp|timesince }}
+              </cite>
+          </footer>
+        </blockquote>
+
+        {% endfor %}
+        <div class="form-group row">
+            <form method='post' action=".">
+                {{ comment_form.as_p }}
+                {% csrf_token %}
+                <input type="hidden" name="parent_id" value="{{ comment.id }}">
+                <input type="submit" class="btn btn-dark" value="Reply">
+            </form>
+        </div>
+
+    </div>
+    {% empty %}
+    <h4>There are no comments yet.</h4>
+    {% endfor %}
+</div>
+</div>
+
+<br>
+
+
+{% endblock %}

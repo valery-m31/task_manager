@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+<title>Delete Task</title>
+{% endblock %}
+
+{% block content %}
+<div class='container col-md-16'>
+    <form action="{% url 'delete-task' slug=task.slug %}" method='post'>
+        {% csrf_token %}
+        <h3 class='delete-task'>
+            Are you sure you want to delete "{{ task.title }}" task?
+        </h3><br>
+        <a href="{% url 'home' %}" class="btn btn-dark">No</a>
+        <button type="submit" name="button" class="btn btn-danger">
+            Yes, I'm sure
+        </button><br>
+    </form>
+</div>
+{% endblock %}
